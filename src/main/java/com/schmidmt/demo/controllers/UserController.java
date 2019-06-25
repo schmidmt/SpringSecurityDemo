@@ -75,7 +75,6 @@ public class UserController {
         grants.add(grantRepo.getByRole("USER"));
         User user = new User(form.getUsername(), grants, form.getPassword());
         userRepository.save(user);
-        user = userRepository.findByUsername(user.getUsername());
 
         // Add user to session
         try {
