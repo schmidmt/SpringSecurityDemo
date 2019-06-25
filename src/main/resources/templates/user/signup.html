@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: headerFragment"></head>
+
+<body>
+
+    <div class="ui centered grid">
+        <div class="eight wide column">
+            <form class="ui form" th:object="${signupForm}" method="post">
+                <div class="field">
+                    <label>Email Address</label>
+                    <input type="text" placeholder="Email" th:field="*{username}" name="username" />
+                    <div class="ui error message visible" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input
+                            type="password"
+                            placeholder="Password"
+                            style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);"
+                            autocomplete="off"
+                            th:field="*{password}"
+                            name="password"
+                    />
+                    <div class="ui error message visible" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+                </div>
+                <div class="field">
+                    <label>Verify Password</label>
+                    <input
+                            type="password"
+                            placeholder="Verify Password"
+                            style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;);"
+                            autocomplete="off"
+                            th:field="*{confirmPassword}"
+                            name="confirmPassword"
+                    />
+                    <div class="ui error message visible" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Confirm Password Error</div>
+                </div>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                <div class="ui error message visible" th:if="${error}" th:text="${error}">Some Error</div>
+
+                <div class="ui submit button">Signup</div>
+            </form>
+    </div>
+
+    </div>
+    <div th:replace="fragments :: script"></div>
+
+    <script type="application/javascript">
+        $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'username',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your e-mail'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Please enter a valid e-mail'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+
+</script>
+</body>
+</html>
