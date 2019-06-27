@@ -17,12 +17,6 @@ group = 'com.schmidmt'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-springBoot {
-	mainClass = "com.schmidmt.demo.DemoApplication"
-}
-
-
-
 configurations {
 	developmentOnly
 	runtimeClasspath {
@@ -43,4 +37,5 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework.security:spring-security-test'
+	compile group: 'org.apache.tika', name: 'tika-core', version: '1.21'
 }

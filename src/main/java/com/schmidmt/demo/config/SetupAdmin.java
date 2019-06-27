@@ -18,17 +18,10 @@ import java.util.HashSet;
 @SpringBootApplication
 @ComponentScan("com.schmidmt.demo.models")
 @ComponentScan("com.schmidmt.demo.models.dao")
-public class SetupAdmin
-        implements CommandLineRunner {
+public class SetupAdmin implements CommandLineRunner {
 
     private static Logger LOG = LoggerFactory
             .getLogger(SetupAdmin.class);
-
-    public static void main(String[] args) {
-        LOG.info("STARTING THE APPLICATION");
-        SpringApplication.run(SetupAdmin.class, args);
-        LOG.info("APPLICATION FINISHED");
-    }
 
     @Autowired
     private UserRepository userRepository;

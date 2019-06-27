@@ -1,5 +1,6 @@
-package com.schmidmt.demo.config;
+package com.schmidmt.demo.services;
 
+import com.schmidmt.demo.config.SetupAdmin;
 import com.schmidmt.demo.models.MyUserPrincipal;
 import com.schmidmt.demo.models.User;
 import com.schmidmt.demo.models.dao.UserRepository;
